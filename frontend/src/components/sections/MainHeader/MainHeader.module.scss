@@ -3,13 +3,11 @@
 	position: relative;
 	width: 100%;
 	min-height: 80%;
-	transform: scaleY(0.75); /* Эквивалентно 75% от высоты */
+	transform: scaleY(0.75);
 	transform-origin: top;
-	transition: transform 0.8s ease; /* Плавная анимация scale */
-	@include gradient-top;
-
+	transition: transform 0.8s ease;
 	&.animate {
-		transform: scaleY(1); /* Масштабируем до 100% */
+		transform: scaleY(1);
 	}
 }
 

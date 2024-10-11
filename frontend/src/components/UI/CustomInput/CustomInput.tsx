@@ -12,7 +12,6 @@ interface CustomInputProps {
 
 export const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
 	({ label, name, type = 'text', placeholder }, ref) => {
-		// Используем useField для получения метаданных о поле (включая ошибку и статус touched)
 		const [field, meta] = useField(name);
 
 		return (

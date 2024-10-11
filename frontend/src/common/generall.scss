@@ -250,7 +250,7 @@ html[data-theme='dark'] {
 }
 
 .wrapper {
-	@include gradient-top();
+	@include gradient-top;
 	@include text-base;
 	@include no-select;
 	@include no-highlight;
@@ -270,4 +270,7 @@ html[data-theme='dark'] {
 }
 strong {
 	font-weight: 700;
+}
+main {
+	flex: 1 0 auto;
 }

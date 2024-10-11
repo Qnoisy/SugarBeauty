@@ -1,50 +1,42 @@
 import * as Yup from 'yup';
 
 const regx = {
-	// Оновлений регулярний вираз: тепер дозволяє лише букви та пробіли
-	name: /^[а-яА-Яa-zA-Z ]{2,30}$/,
+	name: /^[а-яА-Яa-zA-Z ]$/,
 	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 };
 
 // Схема для реєстрації
-const firstName = Yup.string()
-	.matches(regx.name, 'Tylko litery, od 2 do 30 znaków')
-	.required('Proszę wpisać swoje imię');
-
-const lastName = Yup.string()
-	.matches(regx.name, 'Tylko litery, od 2 do 30 znaków')
-	.required('Proszę wpisać swoje nazwisko');
-
+const name = Yup.string().required('Proszę wpisać swoje imię');
+const password = Yup.string()
+	.min(8, 'Password is too short - should be 8 chars minimum.')
+	.required('Proszę wpisać swoje hasło');
 const email = Yup.string()
 	.matches(regx.email, 'Format example@gmail.com')
 	.required('Proszę wpisać swój adres email');
 
-export const registrationSchema = Yup.object().shape({
-	firstName,
-	lastName,
-	email,
-});
 export const subscribeSchema = Yup.object().shape({
 	email,
 });
 
-export const initialValuesRegistration = {
-	firstName: '',
-	lastName: '',
-	email: '',
-};
-
 // Схема для входу в систему
-const username = Yup.string().required('Proszę wpisać swoją nazwę użytkownika');
 
-const password = Yup.string().required('Proszę wpisać swoje hasło');
-
-export const loginSchema = Yup.object().shape({
-	username,
+export const SignInSchema = Yup.object().shape({
+	email,
 	password,
 });
 
-export const initialValuesLogin = {
-	username: '',
+export const initialValuesSignIn = {
+	email: '',
+	password: '',
+};
+
+export const SignUpSchema = Yup.object().shape({
+	name,
+	email,
+	password,
+});
+export const initialValuesSignUp = {
+	name: '',
+	email: '',
 	password: '',
 };

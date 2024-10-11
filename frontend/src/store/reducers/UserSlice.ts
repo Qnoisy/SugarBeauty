@@ -1,36 +1,59 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IUser } from '../../models/IUser';
 
-const initialState: IUser = {
+interface UserState {
+	name: string | null;
+	email: string | null;
+	token: string | null;
+	id: string | null;
+	isAuth: boolean;
+	isLoading: boolean;
+	error: string | null;
+}
+
+const initialState: UserState = {
+	name: null,
+	email: null,
+	token: null,
+	id: null,
 	isAuth: false,
 	isLoading: false,
-	error: '',
+	error: null,
 };
 
-export const userSlice = createSlice({
+const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	reducers: {
-		userIsAuth(state) {
-			state.isLoading = true;
+		setUser(
+			state,
+			action: PayloadAction<{
+				name: string;
+				email: string;
+				token: string;
+				id: string;
+			}>
+		) {
+			state.name = action.payload.name;
+			state.email = action.payload.email;
+			state.token = action.payload.token;
+			state.id = action.payload.id;
+			state.isAuth = true;
 		},
-		userIsAuthSuccess(state, action: PayloadAction<boolean>) {
-			state.isLoading = false;
-			state.error = '';
-			state.isAuth = action.payload;
+		removeUser(state) {
+			state.name = null;
+			state.email = null;
+			state.token = null;
+			state.id = null;
+			state.isAuth = false;
 		},
-		userIsAuthError(state, action: PayloadAction<string>) {
-			state.isLoading = false;
+		setLoading(state, action: PayloadAction<boolean>) {
+			state.isLoading = action.payload;
+		},
+		setError(state, action: PayloadAction<string | null>) {
 			state.error = action.payload;
-			state.isAuth = false;
 		},
-		userLogout(state) {
-			state.isAuth = false;
-		},
-		// userRegister: place for future registration implementation
-		// userRegisterSuccess: place for future registration implementation
-		// userRegisterError: place for future registration implementation
 	},
 });
 
+export const { setUser, removeUser, setLoading, setError } = userSlice.actions;
 export default userSlice.reducer;

@@ -1,7 +1,6 @@
 import React from 'react';
 import Swiper from '../../Swiper/Swiper';
 import { BigBlockInfo } from './BigBlockInfo';
-import styles from './Main.module.scss';
 import { MainInfo } from './MainInfo';
 
 const slides = [
@@ -43,7 +42,7 @@ const testData = [
 ];
 const Main: React.FC = () => {
 	return (
-		<main className={styles.main}>
+		<main>
 			<MainInfo data={testData[0]} imagePosition='right' />
 			<Swiper slides={slides} title={'test'} />
 			<MainInfo data={testData[1]} />

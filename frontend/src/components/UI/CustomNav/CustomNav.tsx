@@ -19,11 +19,11 @@ export const CustomNav = ({
 	return (
 		<nav className={classNames(styles.customNav, customStyles)}>
 			{items.map((item: MenuItem, index: number) => {
-				const isActive = location.pathname === item.link;
+				const isActive = location.pathname === item.path;
 				return (
 					<Link
 						key={index}
-						to={item.link}
+						to={item.path}
 						className={classNames(styles.customNav__items, {
 							[styles.active]: isActive,
 							[styles.noLine]: disableAnimation,

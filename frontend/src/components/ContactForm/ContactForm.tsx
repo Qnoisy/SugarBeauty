@@ -1,5 +1,5 @@
 import { Form, Formik } from 'formik';
-import { registrationSchema } from '../../validation/userShema';
+import { SignUpSchema } from '../../validation/userShema';
 import { CustomButton } from '../UI/CustomButton';
 import { CustomInput } from '../UI/CustomInput';
 import styles from './ContactForm.module.scss';
@@ -16,7 +16,7 @@ export const ContactForm = () => {
 				console.log(values);
 				actions.resetForm();
 			}}
-			validationSchema={registrationSchema}
+			validationSchema={SignUpSchema}
 		>
 			<Form className={styles.contactForm}>
 				<CustomInput
