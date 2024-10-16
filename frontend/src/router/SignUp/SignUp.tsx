@@ -16,26 +16,17 @@ import styles from './SignUp.module.scss';
 const SignUp = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-
-	// Функция для регистрации пользователя
 	const handleSignUp = (values: {
 		name: string;
 		email: string;
 		password: string;
 	}) => {
-		console.log('Регистрация началась'); // Лог для проверки срабатывания
-		dispatch(setLoading(true)); // Устанавливаем флаг загрузки
-
-		const auth = getAuth(); // Получаем объект аутентификации Firebase
-
+		dispatch(setLoading(true));
+		const auth = getAuth();
 		createUserWithEmailAndPassword(auth, values.email, values.password)
 			.then(async ({ user }) => {
-				// Обновляем имя пользователя
 				await updateProfile(user, { displayName: values.name });
-
-				const token = await user.getIdToken(); // Получаем токен пользователя
-
-				// Сохраняем данные пользователя в Redux
+				const token = await user.getIdToken();
 				dispatch(
 					setUser({
 						name: values.name,
@@ -44,9 +35,8 @@ const SignUp = () => {
 						token,
 					})
 				);
-
-				dispatch(setLoading(false)); // Выключаем флаг загрузки
-				navigate('/'); // Перенаправляем на главную страницу
+				dispatch(setLoading(false));
+				navigate('/');
 			})
 			.catch(error => {
 				console.error('Ошибка при регистрации:', error.message);
@@ -55,39 +45,39 @@ const SignUp = () => {
 				alert('Error during registration!'); // Показываем сообщение об ошибке
 			});
 	};
-
 	return (
 		<Container section>
 			<Formik
-				initialValues={initialValuesSignUp} // Начальные значения формы (включая name)
-				validationSchema={SignUpSchema} // Схема валидации (включая name)
+				initialValues={initialValuesSignUp}
+				validationSchema={SignUpSchema}
 				onSubmit={(values, { resetForm }) => {
 					handleSignUp(values); // Вызываем функцию регистрации при сабмите
 					resetForm(); // Сбрасываем форму после успешного сабмита
 				}}
 			>
 				{({ handleSubmit }) => (
-					<Form className={styles.signUp} onSubmit={handleSubmit}>
-						{/* Поле для имени */}
+					<Form className={styles.form} onSubmit={handleSubmit}>
+						<h2 className={styles.form__title}>
+							<strong>Zarejestruj się</strong>
+						</h2>
 						<CustomInput
 							label='Name'
 							name='name'
 							placeholder='Enter your name'
 						/>
 						<CustomInput
-							label='Email'
+							label='E-mail'
 							name='email'
 							placeholder='Enter your email'
 						/>
 						<CustomInput
-							label='Password'
+							label='Hasło'
 							name='password'
 							placeholder='Enter your password'
 							type='password'
 						/>
 
-						{/* Кнопка для отправки формы */}
-						<CustomButton type='submit' text='Sign Up' />
+						<CustomButton type='submit' text='załóż konto' />
 					</Form>
 				)}
 			</Formik>

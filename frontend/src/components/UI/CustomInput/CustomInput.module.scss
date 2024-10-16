@@ -3,6 +3,9 @@
 .inputWrapper {
 	@include flex-gap(0rem, column);
 	margin-bottom: 1rem;
+	@media (min-width: 575.98px) {
+		margin-bottom: 1.25rem;
+	}
 }
 
 .label {

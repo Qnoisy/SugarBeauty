@@ -2,6 +2,7 @@ import Main from '../components/sections/Main/Main';
 import Test from '../pages/Test';
 import Test2 from '../pages/Test2';
 import { Profile } from './Profile';
+import { ResetPassword } from './ResetPassword';
 import { SignIn } from './SignIn';
 import { SignUp } from './SignUp';
 
@@ -11,6 +12,8 @@ export const privateRoutes = [
 	{ path: '/test2', component: <Test2 /> },
 	{ path: '/signIn', component: <SignIn /> },
 	{ path: '/profile', component: <Profile /> },
+	{ path: '/signUp', component: <SignUp /> },
+	{ path: '/resetPassword', component: <ResetPassword /> },
 ];
 
 export const publicRoutes = [
@@ -18,6 +21,7 @@ export const publicRoutes = [
 	{ path: '/test', component: <Test /> },
 	{ path: '/signIn', component: <SignIn /> },
 	{ path: '/signUp', component: <SignUp /> },
+	{ path: '/resetPassword', component: <ResetPassword /> },
 ];
 
 export interface MenuItem {

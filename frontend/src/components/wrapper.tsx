@@ -4,6 +4,7 @@ import '../common/generall.scss';
 import '../common/reset.scss';
 import useCustomMediaQueries from '../hooks/useCustomMediaQueries';
 import AppRouter from '../pages/AppRouter';
+import { AppInitializer } from '../router/AppInitializer';
 import { BottomNav } from './BottomNav';
 import { Footer } from './sections/Footer';
 import { Header } from './sections/Header';
@@ -26,6 +27,7 @@ const Wrapper = () => {
 			{(!isSmallScreen || !isMediumScreen) && (
 				<BottomNav isOpen={isOpen} setOpen={setOpen} />
 			)}
+			<AppInitializer />
 		</div>
 	);
 };

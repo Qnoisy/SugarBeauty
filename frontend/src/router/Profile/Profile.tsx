@@ -15,6 +15,7 @@ const Profile = () => {
 			dispatch(removeUser());
 			navigate('/login');
 		});
+		localStorage.removeItem('user');
 	};
 
 	return (

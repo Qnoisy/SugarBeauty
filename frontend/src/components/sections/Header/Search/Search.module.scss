@@ -1,7 +1,7 @@
 @import '../../../../common/generall.scss';
 
 .search {
-	@include border(50%, 2px, var(--text-color));
+	@include border(50%, 3px, var(--text-color));
 	position: absolute;
 	z-index: 10;
 	top: 1rem;
