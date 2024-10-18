@@ -1,3 +1,4 @@
+import { GallerySection } from 'components/sections/GallerySection';
 import Main from '../components/sections/Main/Main';
 import Test from '../pages/Test';
 import Test2 from '../pages/Test2';
@@ -14,6 +15,7 @@ export const privateRoutes = [
 	{ path: '/profile', component: <Profile /> },
 	{ path: '/signUp', component: <SignUp /> },
 	{ path: '/resetPassword', component: <ResetPassword /> },
+	{ path: 'gallery', component: <GallerySection /> },
 ];
 
 export const publicRoutes = [
@@ -22,6 +24,7 @@ export const publicRoutes = [
 	{ path: '/signIn', component: <SignIn /> },
 	{ path: '/signUp', component: <SignUp /> },
 	{ path: '/resetPassword', component: <ResetPassword /> },
+	{ path: '/gallery', component: <GallerySection /> },
 ];
 
 export interface MenuItem {

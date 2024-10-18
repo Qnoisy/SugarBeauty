@@ -2,6 +2,7 @@
 import classNames from 'classnames';
 import React, { useRef } from 'react';
 import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
@@ -91,7 +92,13 @@ const Swiper: React.FC<SwiperProps> = ({ slides, title, className }) => {
 						<h2 className={styles.title}>
 							<strong>{title}</strong>
 						</h2>
-						<CustomButton text='zobacz więcej' className={styles.swiper__btn} />
+
+						<Link to='/gallery'>
+							<CustomButton
+								text='zobacz więcej'
+								className={styles.swiper__btn}
+							/>
+						</Link>
 					</div>
 				</Container>
 			)}
