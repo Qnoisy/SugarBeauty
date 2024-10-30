@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { ButtonHTMLAttributes } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './CustomButton.module.scss';
 
 interface CustomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -7,6 +8,7 @@ interface CustomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	className?: string;
 	text: string;
 	type?: 'button' | 'submit' | 'reset';
+	to?: string; // Если передан, рендерим как Link
 }
 
 export const CustomButton = ({
@@ -14,8 +16,16 @@ export const CustomButton = ({
 	className,
 	text,
 	type = 'button',
+	to,
 	...props
 }: CustomButtonProps) => {
+	if (to) {
+		return (
+			<Link className={classNames(styles.customButton, className)} to={to}>
+				<strong>{text}</strong>
+			</Link>
+		);
+	}
 	return (
 		<button
 			onClick={onClick}

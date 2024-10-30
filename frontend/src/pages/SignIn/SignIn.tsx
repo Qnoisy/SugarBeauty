@@ -1,45 +1,37 @@
 import { Container } from 'components/Container';
+import { GoogleSign } from 'components/GoogleSign';
 import { CustomButton } from 'components/UI/CustomButton';
 import { CustomInput } from 'components/UI/CustomInput';
-import {
-	getAuth,
-	GoogleAuthProvider,
-	signInWithEmailAndPassword,
-	signInWithPopup,
-} from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { Form, Formik } from 'formik';
 import { useAppDispatch } from 'hooks/redux';
-import { FaGoogle } from 'react-icons/fa6';
 import { Link, useNavigate } from 'react-router-dom';
 import { setError, setLoading, setUser } from 'store/reducers/UserSlice';
-import { initialValuesSignIn, SignInSchema } from 'validation/userShema';
+import { auth } from 'utils/firebase';
+import { initialValuesSignIn, SignInSchema } from 'utils/userShema';
 import styles from './SignIn.module.scss';
 
 const SignIn = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
-	const handleAuthSuccess = async (user: any, dispatch: any, navigate: any) => {
+	const handleAuthSuccess = async (user: any) => {
 		try {
 			const token = await user.getIdToken();
 			const name = user.displayName || '';
 			const email = user.email!;
+			const role = 'user';
+			const photoURL = user.photoURL || null; // Фото профиля пользователя
 
 			localStorage.setItem(
 				'user',
-				JSON.stringify({ name, email, id: user.uid, token })
+				JSON.stringify({ name, email, id: user.uid, token, role, photoURL })
 			);
 
-			dispatch(
-				setUser({
-					name,
-					email,
-					id: user.uid,
-					token,
-				})
-			);
+			// Обновляем Redux состояние
+			dispatch(setUser({ name, email, id: user.uid, token, role, photoURL }));
 			dispatch(setLoading(false));
-			navigate('/');
+			navigate('/profile');
 		} catch (error) {
 			console.error('Error during authentication:', error);
 			dispatch(setError((error as Error).message));
@@ -47,30 +39,17 @@ const SignIn = () => {
 		}
 	};
 
-	const handleGoogleSign = () => {
-		dispatch(setLoading(true));
-		const auth = getAuth();
-		const provider = new GoogleAuthProvider();
-
-		signInWithPopup(auth, provider)
-			.then(({ user }) => handleAuthSuccess(user, dispatch, navigate))
-			.catch(error => {
-				dispatch(setError(error.message));
-				dispatch(setLoading(false));
-				alert('Invalid user!');
-			});
-	};
-
 	const handleSignIn = (email: string, password: string) => {
 		dispatch(setLoading(true));
-		const auth = getAuth();
-
 		signInWithEmailAndPassword(auth, email, password)
-			.then(({ user }) => handleAuthSuccess(user, dispatch, navigate))
-			.catch(error => {
-				dispatch(setError(error.message));
+			.then(({ user }) => handleAuthSuccess(user))
+			.catch((error: unknown) => {
+				console.error('Sign-in error:', error);
+				dispatch(
+					setError(error instanceof Error ? error.message : 'An error occurred')
+				);
 				dispatch(setLoading(false));
-				alert('Invalid user!');
+				alert('Invalid credentials');
 			});
 	};
 
@@ -79,23 +58,12 @@ const SignIn = () => {
 			<Formik
 				initialValues={initialValuesSignIn}
 				validationSchema={SignInSchema}
-				onSubmit={values => {
-					handleSignIn(values.email, values.password);
-				}}
+				onSubmit={values => handleSignIn(values.email, values.password)}
 			>
 				<Form className={styles.form}>
 					<h2 className={styles.form__title}>
 						<strong>zaloguj się</strong>
 					</h2>
-					<button onClick={handleGoogleSign} className={styles.form__google}>
-						<FaGoogle className={styles.form__img} />
-						<strong>kontynuuj z google</strong>
-					</button>
-					<button className={styles.form__reset}>
-						<Link to='/signUp'>
-							<strong>Zaloz konto</strong>
-						</Link>
-					</button>
 					<CustomInput
 						label='E-mail'
 						name='email'
@@ -108,11 +76,14 @@ const SignIn = () => {
 						type='password'
 					/>
 
-					<button className={styles.form__reset}>
-						<Link to='/resetPassword'>
-							<strong>Nie pamiętasz hasła?</strong>
-						</Link>
-					</button>
+					<Link to='/resetPassword' className={styles.form__reset}>
+						<strong>Nie pamiętasz hasła?</strong>
+					</Link>
+					<Link to='/signUp' className={styles.form__reset}>
+						<strong>Nie masz konta?</strong>
+						{/* Zaloz konto */}
+					</Link>
+					<GoogleSign />
 					<CustomButton type='submit' text='zaloguj się' />
 				</Form>
 			</Formik>
@@ -120,4 +91,4 @@ const SignIn = () => {
 	);
 };
 
-export { SignIn };
+export default SignIn;

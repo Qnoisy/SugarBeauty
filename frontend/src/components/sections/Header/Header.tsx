@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import useCustomMediaQueries from '../../../hooks/useCustomMediaQueries';
 import { menuItems } from '../../../router';
 import { Burger } from '../../BottomNav/Burger';
@@ -28,22 +27,11 @@ export const Header = ({ isOpen, setOpen }: HeaderProps) => {
 					)}
 					<Search />
 					{(isLargeScreen || isMediumScreen) && (
-						<Burger
-							isOpen={isOpen}
-							setOpen={setOpen}
-							customStyle={classNames(styles.headerBurger, {
-								[styles.header__open]: isOpen,
-							})}
-						/>
+						<Burger isOpen={isOpen} setOpen={setOpen} />
 					)}
 				</div>
 				<BurgerModal isActive={isOpen} setIsActive={setOpen}>
-					<div style={{ textAlign: 'center' }}>
-						<CustomNav
-							customStyles={styles.customNav__style}
-							items={menuItems}
-						/>
-					</div>
+					<CustomNav customStyles={styles.customNav__style} items={menuItems} />
 				</BurgerModal>
 			</Container>
 		</header>

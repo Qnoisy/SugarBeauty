@@ -1,16 +1,20 @@
 @import '../../../common/generall.scss';
 
 .inputWrapper {
+	width: 100%;
 	@include flex-gap(0rem, column);
 	margin-bottom: 1rem;
 	@media (min-width: 575.98px) {
-		margin-bottom: 1.25rem;
+		margin-bottom: 1.5rem;
 	}
 }
 
 .label {
-	font-size: 1rem;
+	font-size: 1.125rem;
 	margin-bottom: 0.5rem;
+	// strong {
+	// 	@include text-special;
+	// }
 }
 
 .customInput {

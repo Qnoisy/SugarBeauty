@@ -44,3 +44,8 @@ export const initialValuesSignUp = {
 export const ResetPasswordSchema = Yup.object().shape({
 	email: Yup.string().email('Invalid email').required('Email is required'),
 });
+
+// Схема валидации с необязательными полями
+export const editProfileSchema = Yup.object().shape({
+	name: Yup.string().required('Name is required'),
+});

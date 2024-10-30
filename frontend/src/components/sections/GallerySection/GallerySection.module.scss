@@ -1,8 +1,12 @@
 @import '../../../common/generall.scss';
 
 .gallerySection {
-	padding: 8rem 24px 5rem 24px;
+	padding: 5rem 24px;
+
 	text-align: center;
+	@media (min-width: 991.98px) {
+		padding: 8rem 24px 5rem 24px;
+	}
 }
 
 .gallerySection__title {

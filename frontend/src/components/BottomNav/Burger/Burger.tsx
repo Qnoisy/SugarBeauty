@@ -10,7 +10,11 @@ interface BurgerProps {
 
 export const Burger = ({ isOpen, setOpen, customStyle }: BurgerProps) => {
 	return (
-		<div className={classNames(styles.burger, customStyle)}>
+		<div
+			className={classNames(styles.burger, {
+				[styles.burger__open]: isOpen,
+			})}
+		>
 			<Hamburger toggled={isOpen} toggle={setOpen} />
 		</div>
 	);

@@ -1,16 +1,21 @@
 @import '../../common/generall.scss';
 .form {
 	@include background-base;
-	padding: 2rem;
+	padding: 1.5rem;
 	margin-top: 3rem;
 	border-radius: 2rem;
-	@media (min-width: 575.98px) {
+	text-align: center;
+	@media (min-width: 767.98px) {
+		text-align: left;
 		border-radius: 3rem;
 		margin-top: 7rem;
-		padding: 3rem;
+		padding: 2.5rem;
 	}
 }
+
 .form__title {
+	@include text-special;
+	text-align: center;
 	text-transform: uppercase;
 	font-size: 1.5rem;
 	margin-bottom: 1rem;
@@ -19,32 +24,14 @@
 		margin-bottom: 1.5rem;
 	}
 }
-.form__google {
-	@include button-style;
-	border-radius: 2rem;
-	background-color: transparent;
-	display: flex;
-	align-items: center;
-	gap: 1rem;
-	font-size: 1.125rem;
-	margin-bottom: 1rem;
-	&:hover {
-		@include text-color(--button-text-color-hover, 0.3s);
-		background-color: var(--button-background-color-hover);
-	}
-	.form__img {
-		font-size: 1.5rem;
-	}
-}
 .form__reset {
-	display: block;
 	font-size: 1.2rem;
 	background-color: transparent;
 	margin-bottom: 1rem;
 	&:hover {
 		text-decoration: underline;
 	}
-	@media (min-width: 575.98px) {
+	@media (min-width: 767.98px) {
 		margin-bottom: 1.5rem;
 	}
 }

@@ -26,6 +26,10 @@
 	@include text-color(--text-color-special);
 }
 
+@mixin text-universal {
+	@include text-color(--universal-text-color);
+}
+
 @mixin border($radius: 1rem, $size: 3px, $color: var(--border-color)) {
 	border-radius: $radius;
 	border: $size solid $color;
@@ -104,6 +108,8 @@ html[data-theme='light'] {
 	--text-color-special: #375475;
 	--text-color-special-hover: #ffdaaa;
 
+	--universal-text-color: #ffffff;
+
 	--border-color: #001317;
 
 	--gradient-background-top: linear-gradient(to right, #000a0c, #001317);
@@ -120,9 +126,9 @@ html[data-theme='dark'] {
 	--button-border-color: #cfdef3;
 
 	--background-color: #001317;
-	--second-background-color: #cfdef3;
+	--second-background-color: #bdcbdf;
 
-	--text-color: #cfdef3;
+	--text-color: #ffffff;
 	--text-color-hover: #001317;
 
 	--text-color-second: #001317;
@@ -130,6 +136,8 @@ html[data-theme='dark'] {
 
 	--text-color-special: #fecd8c;
 	--text-color-special-hover: #ffdaaa;
+
+	--universal-text-color: #ffffff;
 
 	--border-color: #cfdef3;
 

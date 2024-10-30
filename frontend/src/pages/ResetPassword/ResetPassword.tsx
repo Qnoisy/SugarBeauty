@@ -7,7 +7,7 @@ import { Form, Formik } from 'formik';
 import { useAppDispatch } from 'hooks/redux';
 import { useNavigate } from 'react-router-dom';
 import { setError, setLoading } from 'store/reducers/UserSlice';
-import { ResetPasswordSchema } from 'validation/userShema';
+import { ResetPasswordSchema } from 'utils/userShema';
 import styles from './ResetPassword.module.scss';
 
 const ResetPassword = () => {

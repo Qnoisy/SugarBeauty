@@ -18,12 +18,9 @@
 }
 .customNav__style {
 	flex-direction: column;
+	text-align: center;
 }
-.headerBurger {
-	@include text-base;
-	z-index: 30 !important;
-	justify-content: flex-end;
-}
+
 .header__row {
 	display: flex;
 	justify-content: space-between;
@@ -34,7 +31,4 @@
 .header__logo {
 	@include flex-center;
 	gap: 2rem;
-}
-.header__open {
-	@include text-secondary;
 }

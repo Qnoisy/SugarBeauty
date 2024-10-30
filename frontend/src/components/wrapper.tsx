@@ -3,7 +3,8 @@ import { useLocation } from 'react-router-dom';
 import '../common/generall.scss';
 import '../common/reset.scss';
 import useCustomMediaQueries from '../hooks/useCustomMediaQueries';
-import AppRouter from '../pages/AppRouter';
+
+import AppRouter from 'router/AppRouter';
 import { AppInitializer } from '../router/AppInitializer';
 import { BottomNav } from './BottomNav';
 import { Footer } from './sections/Footer';

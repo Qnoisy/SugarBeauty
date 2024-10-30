@@ -1,5 +1,5 @@
 import { Form, Formik } from 'formik';
-import { SignUpSchema } from '../../validation/userShema';
+import { SignUpSchema } from '../../utils/userShema';
 import { CustomButton } from '../UI/CustomButton';
 import { CustomInput } from '../UI/CustomInput';
 import styles from './ContactForm.module.scss';

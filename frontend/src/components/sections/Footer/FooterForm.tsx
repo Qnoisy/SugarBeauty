@@ -1,9 +1,9 @@
 import { Formik, Form as FormikForm } from 'formik';
-import { subscribeSchema } from '../../../../validation/userShema';
-import { CustomButton } from '../../../UI/CustomButton';
-import { CustomInput } from '../../../UI/CustomInput';
+import { subscribeSchema } from '../../../utils/userShema';
+import { CustomButton } from '../../UI/CustomButton';
+import { CustomInput } from '../../UI/CustomInput';
+import styles from './Footer.module.scss';
 
-// interface FooterFormProps {}
 export const FooterForm = () => {
 	return (
 		<Formik
@@ -24,7 +24,11 @@ export const FooterForm = () => {
 						type='email'
 						label='Subscribe to our newsletter'
 					/>
-					<CustomButton type='submit' text={'Subscribe'}></CustomButton>
+					<CustomButton
+						className={styles.footer__btn}
+						type='submit'
+						text={'Subscribe'}
+					></CustomButton>
 				</FormikForm>
 			)}
 		</Formik>
