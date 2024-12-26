@@ -1,0 +1,72 @@
+@import '../../../common/generall.scss';
+.mainHeader {
+	position: relative;
+	width: 100%;
+	min-height: 80%;
+	transform: scaleY(0.75);
+	transform-origin: top;
+	transition: transform 0.8s ease;
+	&.animate {
+		transform: scaleY(1);
+	}
+}
+
+.mainHeader__img {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	border-radius: 0rem 0rem 2rem 2rem;
+	@media (min-width: 767.98px) {
+		border-radius: 0rem 0rem 3rem 3rem;
+	}
+	img {
+		filter: brightness(0.7);
+		width: 100%;
+		height: 100%;
+		object-position: center;
+		object-fit: cover;
+	}
+}
+.mainHeader__Container {
+	height: 100%;
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+	padding-bottom: 5rem;
+}
+// .mainHeader__block {
+// 	border-radius: 1rem;
+// 	padding: 1rem;
+// 	background: rgba(0, 0, 0, 0.6);
+// }
+.mainHeader__title {
+	text-transform: uppercase;
+	font-size: 1.5rem;
+	margin-bottom: 1rem;
+	@media (min-width: 399.98px) {
+		font-size: 2rem;
+	}
+	@media (min-width: 767.98px) {
+		font-size: 3.75rem;
+		line-height: 3.75rem;
+	}
+}
+.mainHeader__sub-title {
+	font-size: 1rem;
+	margin-bottom: 1rem;
+	@media (min-width: 767.98px) {
+		font-size: 1.125rem;
+	}
+}
+.mainHeader__btn {
+	width: 100%;
+	@media (min-width: 767.98px) {
+		width: 250px;
+	}
+}
+// 	@media (min-width: 319.98px) {}
+//   @media (min-width: 399.98px) {}
+//   @media (min-width: 575.98px) {}
+//   @media (min-width: 767.98px) {}
+//   @media (min-width: 991.98px) {}
+//   @media (min-width: 1199.98px) {}

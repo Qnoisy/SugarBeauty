@@ -1,0 +1,73 @@
+@import '../../../../common/generall.scss';
+
+.search {
+	@include border(50%, 3px, var(--universal-text-color));
+	box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3),
+		inset 2px 2px 5px rgba(0, 0, 0, 0.3);
+	position: absolute;
+	z-index: 5;
+	top: 1rem;
+	right: 0rem;
+	width: 2.5rem;
+	height: 2.5rem;
+	overflow: hidden;
+	transition: all 0.5s ease;
+	@media (min-width: 575.98px) {
+		top: 1.25rem;
+		top: 2.25rem;
+		right: 5rem;
+	}
+
+	background-color: transparent;
+	&.expanded {
+		width: 100%;
+
+		border-radius: 1.25rem;
+		@media (min-width: 575.98px) {
+			width: 50%;
+		}
+		@media (min-width: 991.98px) {
+			width: 30%;
+		}
+	}
+
+	&.expanded .search__input {
+		opacity: 1;
+	}
+	&.expanded .search__btn {
+		transition: all 0.5s ease;
+		transform: rotate(44deg);
+		opacity: 1;
+	}
+}
+.search__input {
+	@include text-universal;
+	@include glass-background;
+	font-size: 1rem;
+	padding-left: 1rem;
+	padding-right: 2rem;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	&::placeholder {
+		@include text-universal;
+		opacity: 0.7;
+	}
+}
+.search__btn {
+	@include flex-center;
+	background-color: transparent;
+	position: absolute;
+	width: 33px;
+	height: 33px;
+	top: 0;
+	right: 1px;
+	transition: all 0.5s ease;
+}
+
+.search__icon {
+	@include text-universal;
+	@include text-hover;
+	font-size: 1.4rem;
+}

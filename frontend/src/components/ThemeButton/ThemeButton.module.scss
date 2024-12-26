@@ -1,0 +1,9 @@
+@import '../../common/generall.scss';
+
+.theme__btn {
+	background-color: transparent;
+	@include text-base;
+	display: flex;
+	align-items: center;
+	font-size: 1.7rem;
+}

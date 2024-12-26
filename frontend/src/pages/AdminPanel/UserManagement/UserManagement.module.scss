@@ -1,0 +1,22 @@
+.userManagement {
+	.searchInput {
+		width: 100%;
+		padding: 8px;
+		margin-bottom: 16px;
+	}
+	.userList {
+		list-style: none;
+		padding: 0;
+		.userItem {
+			display: flex;
+			justify-content: space-between;
+			padding: 8px 0;
+			border-bottom: 1px solid #ccc;
+			.actions {
+				button {
+					margin-left: 8px;
+				}
+			}
+		}
+	}
+}

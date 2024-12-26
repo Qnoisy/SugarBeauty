@@ -1,0 +1,22 @@
+.galleryManagement {
+	.uploadSection {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		margin-bottom: 20px;
+	}
+	.imageList {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+		gap: 16px;
+		list-style: none;
+		padding: 0;
+		.imageItem {
+			position: relative;
+			img {
+				width: 100%;
+				border-radius: 8px;
+			}
+		}
+	}
+}

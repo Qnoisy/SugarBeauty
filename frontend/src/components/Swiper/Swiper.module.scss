@@ -1,0 +1,88 @@
+@import '../../common/generall.scss';
+.swiperWrapper {
+	padding: 1rem 0 1.5rem 0;
+	@media (min-width: 767.98px) {
+		padding: 1.5rem 0 2rem 0;
+	}
+	@media (min-width: 1139.98px) {
+		padding: 2rem 0 4rem 0;
+	}
+	.slick-slide {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0 1rem !important;
+	}
+
+	.slideContainer {
+		padding: 0 1rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+		img {
+			transition: all 0.3s;
+			width: 100%;
+			max-height: 100%;
+			object-fit: cover;
+			border-radius: 1rem;
+		}
+		// &:hover img {
+		// 	transform: scale(1.1); /* Увеличиваем картинку при наведении */
+		// }
+	}
+
+	.slick-list {
+		margin: 0;
+	}
+}
+.swiper__row {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-bottom: 1rem;
+	@media (min-width: 767.98px) {
+		flex-direction: row;
+		align-items: flex-start;
+		justify-content: space-between;
+	}
+}
+.swiper__btn {
+	width: 250px;
+}
+.title {
+	@include flex-center;
+	@include text-secondary;
+	text-transform: uppercase;
+	font-size: 1.5rem;
+	line-height: normal;
+	margin-bottom: 1rem;
+	@media (min-width: 767.98px) {
+		font-size: 2.25rem;
+	}
+}
+@media (min-width: 319.98px) {
+	.slideContainer {
+		height: 22.5rem;
+		img {
+			height: 100%;
+		}
+	}
+}
+
+@media (min-width: 1199.98px) {
+	.slideContainer {
+		height: 28rem;
+	}
+}
+
+.row__arrow {
+	display: flex;
+	justify-content: flex-end;
+	gap: 2rem;
+}
+.arrows {
+	cursor: pointer;
+	font-size: 2rem;
+	@include text-secondary;
+}

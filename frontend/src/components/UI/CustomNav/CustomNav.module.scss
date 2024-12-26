@@ -1,0 +1,40 @@
+@import '../../../common/generall.scss';
+
+.customNav {
+	display: flex;
+	gap: 1rem;
+}
+
+.customNav__items {
+	position: relative;
+	padding-bottom: 5px;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: -2px;
+		height: 2px;
+		width: 0;
+		background-color: currentColor;
+		transition: width 0.3s ease;
+	}
+
+	&:hover::after {
+		width: 100%;
+	}
+
+	&.noLine::after {
+		display: none; /* Убираем линию под элементом */
+	}
+}
+
+.active {
+	@include text-special;
+	&::after {
+		width: 100%;
+		background-color: currentColor;
+	}
+}

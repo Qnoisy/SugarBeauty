@@ -1,0 +1,13 @@
+@import '../../../common/generall.scss';
+
+.burger {
+	@include text-universal;
+	@include flex-center;
+	justify-content: flex-end;
+	z-index: 30;
+	padding: 1rem;
+}
+
+.burger__open {
+	@include text-secondary;
+}

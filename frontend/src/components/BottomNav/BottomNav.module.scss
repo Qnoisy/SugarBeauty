@@ -1,0 +1,58 @@
+@import '../../common/generall.scss';
+
+.bottomNav {
+	@include background-secondary;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+	z-index: 1050; // Увеличен для гарантии видимости над модальными окнами
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 3rem;
+	padding: 0 1rem;
+}
+
+.bottomNav__links {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+	font-size: 1.5rem;
+}
+
+.bottomNav__link {
+	@include flex-center;
+	height: 1.5rem;
+}
+
+.navBurger {
+	@include flex-center;
+	@include background-secondary;
+	position: relative;
+	top: -1rem;
+	z-index: 10;
+	border-radius: 50%;
+}
+
+.navBurgerBottom {
+	width: 80px;
+	height: 80px;
+	@include flex-center;
+	@include background-secondary;
+	border-radius: 50%;
+	position: fixed;
+	bottom: -0.1875rem;
+	left: 50%;
+	padding: 1rem;
+	box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+	transform: translateX(-50%);
+	z-index: 9;
+	pointer-events: none;
+}
+
+.customNav__style {
+	flex-direction: column;
+}

@@ -1,0 +1,16 @@
+@import '../../../common/generall.scss';
+
+.customButton {
+	@include flex-center;
+	@include button-style;
+
+	font-size: 1.125rem;
+	text-transform: uppercase;
+	strong {
+		@include text-special;
+	}
+	width: 100%;
+	@media (min-width: 767.98px) {
+		width: auto;
+	}
+}

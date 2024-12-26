@@ -1,0 +1,96 @@
+@import '../../common/generall.scss';
+
+.profile {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto 1fr;
+	gap: 16px;
+	@include background-base;
+	padding: 1.5rem;
+	margin-top: 2rem;
+	border-radius: 2rem;
+
+	@media (min-width: 575.98px) {
+		grid-template-columns: 1fr 1fr;
+
+		margin-top: 7rem;
+
+		border-radius: 3rem;
+		padding: 2.5rem;
+	}
+
+	&__title {
+		grid-column: 1 / 3;
+		@include text-special;
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 1.5rem;
+		margin-bottom: 1rem;
+
+		@media (min-width: 575.98px) {
+			font-size: 2.25rem;
+			margin-bottom: 1.5rem;
+		}
+	}
+
+	&__header {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	&__user-info {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		width: 100%;
+		@include border;
+		padding: 1rem;
+	}
+
+	&__avatar {
+		width: 3.5rem;
+		height: 3.5rem;
+		border-radius: 50%;
+		overflow: hidden;
+
+		@media (min-width: 767.98px) {
+			width: 4rem;
+			height: 4rem;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	&__details {
+		font-size: 1rem;
+		line-height: 1.5;
+		margin-bottom: 1rem;
+
+		@media (min-width: 767.98px) {
+			font-size: 1.125rem;
+			line-height: 1.75;
+		}
+
+		strong {
+			text-transform: capitalize;
+			@include text-special;
+			padding-right: 0.5rem;
+		}
+	}
+
+	&__actions {
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
+		justify-content: center;
+
+		@media (min-width: 767.98px) {
+			justify-content: flex-start;
+		}
+	}
+}

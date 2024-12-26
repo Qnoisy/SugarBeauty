@@ -1,0 +1,282 @@
+@mixin flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@mixin text-color($color-var, $transition-time: 200ms, $text-shadow: none) {
+	color: var($color-var);
+	transition: all $transition-time linear;
+	text-shadow: $text-shadow;
+	&,
+	* {
+		color: var($color-var);
+	}
+}
+
+@mixin text-base {
+	@include text-color(--text-color);
+}
+
+@mixin text-secondary {
+	@include text-color(--text-color-second);
+}
+
+@mixin text-special {
+	@include text-color(--text-color-special);
+}
+
+@mixin text-universal {
+	@include text-color(--universal-text-color);
+}
+
+@mixin border($radius: 1rem, $size: 3px, $color: var(--border-color)) {
+	border-radius: $radius;
+	border: $size solid $color;
+	@include transition;
+}
+
+@mixin text-hover($color: var(--text-color-hover)) {
+	transition: all 0.3s ease;
+	@media (hover: hover) {
+		&:hover {
+			@include text-color($color);
+		}
+	}
+	@media (hover: none) {
+		&:active {
+			@include text-color($color);
+		}
+	}
+}
+
+@mixin background-color($background-var, $text-color-var: --text-color) {
+	background-color: var($background-var);
+	transition: all 200ms linear;
+	@include text-color($text-color-var);
+}
+
+@mixin background-base {
+	@include background-color(--background-color);
+}
+
+@mixin background-secondary {
+	@include background-color(--second-background-color, --text-color-second);
+}
+
+@mixin button-style {
+	@include border;
+	background-color: var(--button-background-color);
+	transition: background-color 0.3s ease, color 0.3s ease;
+	padding: 0.75rem;
+	font-size: 1rem;
+
+	@media (hover: hover) {
+		&:hover {
+			@include text-color(--button-text-color-hover, 0.3s);
+			background-color: var(--button-background-color-hover);
+		}
+	}
+
+	@media (hover: none) {
+		&:focus {
+			@include text-color(--button-text-color-hover, 0.3s);
+			background-color: var(--button-background-color-hover);
+			transition: background-color 0.3s ease, color 0.3s ease;
+		}
+	}
+}
+
+html[data-theme='light'] {
+	--button-text-color: #001317;
+	--button-text-color-hover: #cfdef3;
+
+	--button-background-color: #cfdef3;
+	--button-background-color-hover: #001317;
+
+	--button-border-color: #001317;
+
+	--background-color: #cfdef3;
+	--second-background-color: #001317;
+
+	--text-color: #001317;
+	--text-color-hover: #cfdef3;
+
+	--text-color-second: #cfdef3;
+	--text-color-second-hover: #001317;
+
+	--text-color-special: #375475;
+	--text-color-special-hover: #ffdaaa;
+
+	--universal-text-color: #ffffff;
+
+	--border-color: #001317;
+
+	--gradient-background-top: linear-gradient(to right, #000a0c, #001317);
+	--gradient-background-bottom: linear-gradient(to right, #dee9ff, #cfdef3);
+}
+
+html[data-theme='dark'] {
+	--button-text-color: #fecd8c;
+	--button-text-color-hover: #001317;
+
+	--button-background-color: #001317;
+	--button-background-color-hover: #cfdef3;
+
+	--button-border-color: #cfdef3;
+
+	--background-color: #001317;
+	--second-background-color: #bdcbdf;
+
+	--text-color: #ffffff;
+	--text-color-hover: #001317;
+
+	--text-color-second: #001317;
+	--text-color-second-hover: #cfdef3;
+
+	--text-color-special: #fecd8c;
+	--text-color-special-hover: #ffdaaa;
+
+	--universal-text-color: #ffffff;
+
+	--border-color: #cfdef3;
+
+	--gradient-background-top: linear-gradient(to right, #fecd8c, #cfdef3);
+	--gradient-background-bottom: linear-gradient(to right, #000a0c, #001317);
+}
+
+@mixin neumorphism(
+	$light-color: rgba(255, 255, 255, 0.5),
+	$dark-color: rgba(0, 0, 0, 0.2),
+	$inset: false
+) {
+	$shadow-inset: if($inset, 'inset', '');
+	box-shadow: -5px -5px 10px $light-color $shadow-inset,
+		5px 5px 10px $dark-color $shadow-inset;
+}
+
+@mixin animated-gradient {
+	background-size: 400% 400%;
+	animation: GradientAnimation 8s ease infinite;
+
+	@keyframes GradientAnimation {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+}
+@mixin gradient-top {
+	background-image: var(--gradient-background-top);
+	@include animated-gradient;
+}
+@mixin gradient-bottom {
+	background-image: var(--gradient-background-bottom);
+	@include animated-gradient;
+}
+// @mixin gradient-black {
+// 	background-image: linear-gradient(to right, #000a0c, #001317);
+// 	@include animated-gradient;
+// }
+
+// @mixin gradient-lilac {
+// 	background-image: linear-gradient(to right, #b8c6e5, #cfdef3);
+// 	@include animated-gradient;
+// }
+
+@mixin transition($property: all, $duration: 300ms, $timing-function: ease) {
+	transition: $property $duration $timing-function;
+}
+
+@mixin glass-background {
+	background: rgba(255, 255, 255, 0.2);
+	box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.15),
+		-8px -8px 15px rgba(255, 255, 255, 0.15),
+		inset 5px 5px 10px rgba(0, 0, 0, 0.05),
+		inset -5px -5px 10px rgba(255, 255, 255, 0.05);
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
+}
+@mixin flex-gap($gap: 1rem, $direction: row, $align: left, $justify: center) {
+	display: flex;
+	flex-direction: $direction;
+	gap: $gap;
+	align-items: $align;
+	justify-content: $justify;
+}
+
+@mixin box-shadow(
+	$x: 0,
+	$y: 2px,
+	$blur: 8px,
+	$spread: 0,
+	$color: rgba(0, 0, 0, 0.2)
+) {
+	box-shadow: $x $y $blur $spread $color;
+}
+
+*::-webkit-scrollbar {
+	width: 7px;
+	background-color: transparent !important;
+	border-radius: 0.625rem; // закругление углов скроллбара
+}
+
+*::-webkit-scrollbar-track {
+	background: rgb(218, 218, 218);
+	border-radius: 0.625rem; // закругление углов скроллбара
+}
+
+*::-webkit-scrollbar-thumb {
+	background: #888; // цвет самого скроллбара
+	border-radius: 0.625rem; // закругление углов скроллбара
+	&:hover {
+		background: #555; // цвет при наведении
+	}
+}
+@mixin no-select {
+	-webkit-user-select: none; /* Chrome/Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+	user-select: none; /* Standard */
+}
+
+// Отключение подсветки блока при нажатии
+@mixin no-highlight {
+	-webkit-tap-highlight-color: transparent; /* Отключение подсветки при нажатии */
+}
+
+#root {
+	height: 100%;
+	width: 100%;
+}
+
+.wrapper {
+	@include gradient-top;
+	@include text-base;
+	@include no-select;
+	@include no-highlight;
+
+	display: flex;
+	overflow-x: hidden;
+	flex-direction: column;
+
+	transition: background-color 200ms linear;
+
+	font-family: 'Rubik', sans-serif;
+	line-height: 1.75rem;
+	letter-spacing: 0.5px;
+	font-size: 1rem;
+	width: 100%;
+	height: 100%;
+}
+strong {
+	font-weight: 700;
+}
+main {
+	flex: 1 0 auto;
+}
